@@ -5,13 +5,15 @@ from xian_py.xian import Xian
 wallet = Wallet(PRIVATE_KEY)
 public_key = wallet.public_key
 
-xian = Xian(RPC_NODE_URL)
+print(f"public_key: {public_key}")
+
+xian = Xian(RPC_NODE_URL, wallet=wallet)
 
 
 def submit_block(block):
     res = xian.send_tx(
         contract=CONTRACT_NAME,
-        method="submit_it",
+        function="submit_it",
         kwargs={
             "key": public_key,
             "message": block["message"],

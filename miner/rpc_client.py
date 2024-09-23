@@ -3,22 +3,22 @@ import requests
 def query():
     return """
     query MyQuery {
-        difficulty: allStates(filter: { key: { equalTo: "con_powpow.difficulty" } }) {
+        difficulty: allStates(filter: { key: { equalTo: "con_pow7.difficulty" } }) {
             nodes {
             value
             }
         }
-        height: allStates(filter: { key: { equalTo: "con_powpow.height" } }) {
+        height: allStates(filter: { key: { equalTo: "con_pow7.height" } }) {
             nodes {
             value
             }
         }
-        current_hash: allStates(filter: { key: { equalTo: "con_powpow.current_hash" } }) {
+        current_hash: allStates(filter: { key: { equalTo: "con_pow7.current_hash" } }) {
             nodes {
             value
             }
         }
-        last_block_time: allStates(filter: { key: { equalTo: "con_powpow.last_block_time" } }) {
+        last_block_time: allStates(filter: { key: { equalTo: "con_pow7.last_block_time" } }) {
             nodes {
             value
             }
@@ -27,7 +27,7 @@ def query():
 """
 
 def get_block_info(rpc_node_url):
-    response = requests.post(rpc_node_url, json={"query": query()})
+    response = requests.post(f"{rpc_node_url}/graphql", json={"query": query()})
     if response.status_code == 200:
         
         json = response.json()

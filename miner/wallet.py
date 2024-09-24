@@ -16,7 +16,6 @@ def submit_block(block):
         function="submit_it",
         kwargs={
             "key": public_key,
-            "message": block["message"],
             "extra_data": block["extra_data"],
             "solution": block["solution"],
             "solution_height": block["height"],

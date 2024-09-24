@@ -51,6 +51,8 @@ def worker(worker_id, task_queue, result_queue, stop_event):
                         "height": height
                     })
                     break  # Break the inner loop to get new task
+                else:
+                    print(f"Worker {worker_id} failed to find a block, at nonce {nonce}")
                 nonce += 1
         except multiprocessing.queues.Empty:
             continue
@@ -81,7 +83,7 @@ def master(num_workers, initial_block_hash, initial_difficulty, initial_height):
             print(block_info)
             new_hash = block_info['current_hash']
             if new_hash != current_block_hash:
-                print("New block found, updating workers...")
+                print("New block available, updating workers...")
 
                 current_block_hash = new_hash
                 current_difficulty = block_info['difficulty']
@@ -91,16 +93,17 @@ def master(num_workers, initial_block_hash, initial_difficulty, initial_height):
                 stop_event.clear()  # Clear the stop event for the next round
                 task_queue.put((current_block_hash, current_difficulty, current_height))
             else:
-                print("No new block found, continuing...")
+                print("Continuing mining current block")
 
             while not result_queue.empty():
                 result = result_queue.get()
                 try : 
                     res = submit_block(result)
                     print(res)
-                    stop_event.clear()
                 except Exception as e:
                     print(f"Failed to submit block: {e}")
+                finally:
+                    stop_event.clear()
     except KeyboardInterrupt:
         print("Stopping mining...")
         stop_event.set()

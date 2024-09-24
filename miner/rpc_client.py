@@ -3,22 +3,22 @@ import requests
 def query():
     return """
     query MyQuery {
-        difficulty: allStates(filter: { key: { equalTo: "con_pow7.difficulty" } }) {
+        difficulty: allStates(filter: { key: { equalTo: "con_pow_better2.difficulty" } }) {
             nodes {
             value
             }
         }
-        height: allStates(filter: { key: { equalTo: "con_pow7.height" } }) {
+        height: allStates(filter: { key: { equalTo: "con_pow_better2.height" } }) {
             nodes {
             value
             }
         }
-        current_hash: allStates(filter: { key: { equalTo: "con_pow7.current_hash" } }) {
+        current_hash: allStates(filter: { key: { equalTo: "con_pow_better2.current_hash" } }) {
             nodes {
             value
             }
         }
-        last_block_time: allStates(filter: { key: { equalTo: "con_pow7.last_block_time" } }) {
+        last_block_time: allStates(filter: { key: { equalTo: "con_pow_better2.last_block_time" } }) {
             nodes {
             value
             }

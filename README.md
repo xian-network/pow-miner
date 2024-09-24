@@ -24,8 +24,7 @@ pip install -r requirements.txt
 
 - Create a Xian wallet, using the [browser extension](https://chromewebstore.google.com/detail/xian-wallet/kcimjjhplbcgkcnanijkolfillgfanlc) or [xian-py](https://pypi.org/project/xian-py/)
 - Populate your wallet address and private key in `miner/config.py`
-- Choose how many threads you want to use for mining. (default 1)
-
+- Change `NUM_WORKERS` to the number of worker threads you want to use for mining. (default 1)
 - You will need to obtain some testnet Xian to to submit your blocks and verify your results.
 - Ask in the [Xian Telegram](https://t.me/xian_network) for testnet Xian.
 

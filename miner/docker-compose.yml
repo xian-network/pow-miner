@@ -1,0 +1,10 @@
+version: '3.8'
+
+services:
+  miner:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    volumes:
+      - .:/app
+    command: python miner.py

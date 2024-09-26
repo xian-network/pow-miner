@@ -1,5 +1,7 @@
 ## XIAN POW Miner
 
+** THIS IS A WORK IN PROGRESS, NOT WORKING YET **
+
 A proof of work miner for the XIAN blockchain.
 
 Currently a proof of concept, working on testnet.
